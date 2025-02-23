@@ -12,9 +12,8 @@ func main() {
 
 	var workingPath string = lib.AutoFormatDirArg(os.Args)
 	var sortableFiles []os.DirEntry = lib.CollateDirFiles(workingPath)
-
-	subDirName := constants.DIR_NAME_TEST
-	var newDirPath string = lib.SpawnDir(workingPath, subDirName)
-
-	lib.SortFiles(workingPath, newDirPath, sortableFiles)
+	// lib.InterimSort will handle algorithm step 2
+	var testDirPath string = lib.SpawnDir(workingPath, constants.DIR_NAME_TEST)
+	// lib.FinalSort will handle algorithm step 3
+	lib.SortFiles(workingPath, testDirPath, sortableFiles)
 }

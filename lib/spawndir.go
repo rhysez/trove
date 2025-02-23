@@ -5,7 +5,9 @@ import (
 	"os"
 )
 
-// SpawnDir Handles spawning a new directory within the current working directory.
+// SpawnDir
+// Handles spawning a new directory within the current working directory.
+
 func SpawnDir(workingPath string, name string) string {
 	newPath := workingPath + name
 
