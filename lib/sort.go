@@ -1,6 +1,9 @@
 package lib
 
 import (
+	"fmt"
+	"github.com/h2non/filetype"
+	"github.com/rhysez/trove/constants"
 	"log"
 	"os"
 )
@@ -38,14 +41,42 @@ func InterimSort(workingPath string, sortableFiles []os.DirEntry) {
 	}
 
 	var filesByCategory = [8]FilesCategorised{
-		FilesCategorised{"Images", make([]os.DirEntry, 0)},
-		FilesCategorised{"Docs", make([]os.DirEntry, 0)},
-		FilesCategorised{"Audio", make([]os.DirEntry, 0)},
-		FilesCategorised{"Video", make([]os.DirEntry, 0)},
-		FilesCategorised{"Archives", make([]os.DirEntry, 0)},
-		FilesCategorised{"Fonts", make([]os.DirEntry, 0)},
-		FilesCategorised{"Application", make([]os.DirEntry, 0)},
-		FilesCategorised{"Misc", make([]os.DirEntry, 0)},
+		{constants.DIR_NAME_IMAGES, make([]os.DirEntry, 0)},
+		{constants.DIR_NAME_DOCUMENTS, make([]os.DirEntry, 0)},
+		{constants.DIR_NAME_AUDIO, make([]os.DirEntry, 0)},
+		{constants.DIR_NAME_VIDEO, make([]os.DirEntry, 0)},
+		{constants.DIR_NAME_ARCHIVES, make([]os.DirEntry, 0)},
+		{constants.DIR_NAME_FONTS, make([]os.DirEntry, 0)},
+		{constants.DIR_NAME_APPLICATION, make([]os.DirEntry, 0)},
+		{constants.DIR_NAME_MISC, make([]os.DirEntry, 0)},
 	}
 
+	for _, file := range sortableFiles {
+		for _, category := range filesByCategory {
+			reading, err := os.ReadFile(workingPath + file.Name())
+			// readingInfo purely exists to check if file is a directory
+			readingInfo, errInfo := os.Stat(workingPath + file.Name())
+			if errInfo != nil {
+				log.Fatal(errInfo)
+			}
+			if readingInfo.IsDir() {
+				continue
+			} else {
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				fType, _ := filetype.Match(reading)
+
+				switch fType {
+				case filetype.Unknown:
+					log.Default().Printf("Unknown file type: %s", fType)
+					break
+				}
+				if file.Name() == "silly" {
+					fmt.Println(category.destination)
+				}
+			}
+		}
+	}
 }
