@@ -67,11 +67,13 @@ func InterimSort(workingPath string, sortableFiles []os.DirEntry) {
 				}
 
 				if filetype.IsImage(reading) {
-					_, err := os.Stat(workingPath + category.destination)
+					_, err := os.Stat(workingPath + constants.DIR_NAME_IMAGES)
+					// Directory already exists.
 					if err == nil {
 						continue
 					}
-					SpawnDir(workingPath, category.destination)
+					var imagesDirPath = SpawnDir(workingPath, constants.DIR_NAME_IMAGES)
+					MoveFile(imagesDirPath, workingPath, file.Name())
 				}
 
 				if file.Name() == "silly" {
