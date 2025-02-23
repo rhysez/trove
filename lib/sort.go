@@ -66,13 +66,14 @@ func InterimSort(workingPath string, sortableFiles []os.DirEntry) {
 					log.Fatal(err)
 				}
 
-				fType, _ := filetype.Match(reading)
-
-				switch fType {
-				case filetype.Unknown:
-					log.Default().Printf("Unknown file type: %s", fType)
-					break
+				if filetype.IsImage(reading) {
+					_, err := os.Stat(workingPath + category.destination)
+					if err == nil {
+						continue
+					}
+					SpawnDir(workingPath, category.destination)
 				}
+
 				if file.Name() == "silly" {
 					fmt.Println(category.destination)
 				}
