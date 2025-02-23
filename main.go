@@ -8,7 +8,10 @@ import (
 
 func main() {
 	fmt.Println("Trove version 1.0")
-	workingPath := "tmp/"
+
+	workingPath := lib.AutoFormatDirArg(os.Args)
+
+	fmt.Println(workingPath)
 
 	var sortableFiles []os.DirEntry = lib.CollateDirFiles(workingPath)
 
