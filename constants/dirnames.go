@@ -11,7 +11,6 @@ const (
 	DIR_NAME_SYSTEM       = "System"
 	DIR_NAME_SPREADSHEETS = "Spreadsheets"
 	DIR_NAME_FONTS        = "Fonts"
-	DIR_NAME_NOTATIONS    = "Notations"
 	DIR_NAME_DATABASE     = "Database"
 	DIR_NAME_BACKUPS      = "Backups"
 	DIR_NAME_EBOOK        = "E-Books"
