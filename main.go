@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/rhysez/trove/constants"
 	"github.com/rhysez/trove/lib"
 	"os"
 )
@@ -9,13 +10,10 @@ import (
 func main() {
 	fmt.Println("Trove version 1.0")
 
-	workingPath := lib.AutoFormatDirArg(os.Args)
-
-	fmt.Println(workingPath)
-
+	var workingPath string = lib.AutoFormatDirArg(os.Args)
 	var sortableFiles []os.DirEntry = lib.CollateDirFiles(workingPath)
 
-	subDirName := "subdir"
+	subDirName := constants.DIR_NAME_TEST
 	var newDirPath string = lib.SpawnDir(workingPath, subDirName)
 
 	lib.SortFiles(workingPath, newDirPath, sortableFiles)
