@@ -1,7 +1,6 @@
 package lib
 
 import (
-	"fmt"
 	"github.com/h2non/filetype"
 	"github.com/rhysez/trove/constants"
 	"log"
@@ -35,52 +34,46 @@ func SortFiles(workingPath string, targetDirPath string, sortableFiles []os.DirE
 }
 
 func InterimSort(workingPath string, sortableFiles []os.DirEntry) {
-	type FilesCategorised struct {
-		destination string
-		files       []os.DirEntry
-	}
-
-	var filesByCategory = [8]FilesCategorised{
-		{constants.DIR_NAME_IMAGES, make([]os.DirEntry, 0)},
-		{constants.DIR_NAME_DOCUMENTS, make([]os.DirEntry, 0)},
-		{constants.DIR_NAME_AUDIO, make([]os.DirEntry, 0)},
-		{constants.DIR_NAME_VIDEO, make([]os.DirEntry, 0)},
-		{constants.DIR_NAME_ARCHIVES, make([]os.DirEntry, 0)},
-		{constants.DIR_NAME_FONTS, make([]os.DirEntry, 0)},
-		{constants.DIR_NAME_APPLICATION, make([]os.DirEntry, 0)},
-		{constants.DIR_NAME_MISC, make([]os.DirEntry, 0)},
-	}
+	//type FilesCategorised struct {
+	//	destination string
+	//	files       []os.DirEntry
+	//}
+	//
+	//var filesByCategory = [8]FilesCategorised{
+	//	{constants.DIR_NAME_IMAGES, make([]os.DirEntry, 0)},
+	//	{constants.DIR_NAME_DOCUMENTS, make([]os.DirEntry, 0)},
+	//	{constants.DIR_NAME_AUDIO, make([]os.DirEntry, 0)},
+	//	{constants.DIR_NAME_VIDEO, make([]os.DirEntry, 0)},
+	//	{constants.DIR_NAME_ARCHIVES, make([]os.DirEntry, 0)},
+	//	{constants.DIR_NAME_FONTS, make([]os.DirEntry, 0)},
+	//	{constants.DIR_NAME_APPLICATION, make([]os.DirEntry, 0)},
+	//	{constants.DIR_NAME_MISC, make([]os.DirEntry, 0)},
+	//}
 
 	for _, file := range sortableFiles {
-		for _, category := range filesByCategory {
-			reading, err := os.ReadFile(workingPath + file.Name())
-			// readingInfo purely exists to check if file is a directory
-			readingInfo, errInfo := os.Stat(workingPath + file.Name())
-			if errInfo != nil {
-				log.Fatal(errInfo)
+		reading, err := os.ReadFile(workingPath + file.Name())
+		// readingInfo purely exists to check if file is a directory
+		readingInfo, errInfo := os.Stat(workingPath + file.Name())
+		if errInfo != nil {
+			log.Fatal(errInfo)
+		}
+		if readingInfo.IsDir() {
+			continue
+		} else {
+			if err != nil {
+				log.Fatal(err)
 			}
-			if readingInfo.IsDir() {
-				continue
-			} else {
-				if err != nil {
-					log.Fatal(err)
-				}
 
-				if filetype.IsImage(reading) {
-					_, err := os.Stat(workingPath + constants.DIR_NAME_IMAGES)
-					imagesDirPath := workingPath + constants.DIR_NAME_IMAGES
-					// Directory already exists.
-					if err == nil {
-						MoveFile(imagesDirPath, workingPath, file.Name())
-						continue
-					} else {
-						SpawnDir(workingPath, constants.DIR_NAME_IMAGES)
-						MoveFile(imagesDirPath, workingPath, file.Name())
-					}
-				}
-
-				if file.Name() == "silly" {
-					fmt.Println(category.destination)
+			if filetype.IsImage(reading) {
+				_, err := os.Stat(workingPath + constants.DIR_NAME_IMAGES)
+				imagesDirPath := workingPath + constants.DIR_NAME_IMAGES
+				// Directory already exists.
+				if err == nil {
+					MoveFile(imagesDirPath, workingPath, file.Name())
+					continue
+				} else {
+					SpawnDir(workingPath, constants.DIR_NAME_IMAGES)
+					MoveFile(imagesDirPath, workingPath, file.Name())
 				}
 			}
 		}
