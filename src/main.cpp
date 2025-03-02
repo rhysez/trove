@@ -18,9 +18,9 @@ int main(int argc, char* argv[]) {
 
     if (!std::filesystem::exists(workingDir)) {
         std::filesystem::create_directory(workingDir);
+    } else {
+        std::cout << workingDir << " already exists\n";
     }
-
-    std::filesystem::create_directory(workingDir);
 
     return 0;
 }
