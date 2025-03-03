@@ -6,10 +6,11 @@
 
 // argc - argument count
 // argv - array of arguments provided
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
     std::cout << "Running Trove version 1.0\n";
 
     std::string workingDir;
+
     if (argc > 1) {
         workingDir = autoFormatDirArg(argv[1]);
     } else {
@@ -19,7 +20,7 @@ int main(int argc, char* argv[]) {
     if (!std::filesystem::exists(workingDir)) {
         std::filesystem::create_directory(workingDir);
     } else {
-        std::cout << workingDir << " already exists\n";
+        std::cout << "LOG: " << workingDir << " already exists, defaulting to" << workingDir << "\n";
     }
 
     return 0;
