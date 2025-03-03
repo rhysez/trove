@@ -13,5 +13,5 @@
 // this would create a copy,
 // which is unnecessary when the value will never change.
 void log_message(const std::string& message) {
-    std::cout << "LOG: " << message << '\n';
+    std::cout << "[TROVE] LOG: " << message << '\n';
 }
