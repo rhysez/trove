@@ -6,7 +6,7 @@
 #include <filesystem>
 #include <vector>
 
-std::vector<std::string> sort_files(std::string path) {
+void sort_files(std::string path) {
     std::vector<std::string> files;
     // Iterates through each entry in the directory.
     // Takes a reference to the entry, which is of type 'auto' (automatically assigned).
@@ -15,6 +15,4 @@ std::vector<std::string> sort_files(std::string path) {
         std::filesystem::path file = entry.path().extension();
         std::cout << file.string() << '\n';
     }
-
-    return files;
 }
