@@ -9,4 +9,6 @@ add_executable(trove src/main.cpp
         include/spawn_dir.h
         src/spawn_dir.cpp
         include/args.h
-        src/args.cpp)
+        src/args.cpp
+        include/log.h
+        src/log.cpp)

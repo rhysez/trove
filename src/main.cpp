@@ -1,14 +1,13 @@
 #include <iostream>
-#include "args.h"
 #include <filesystem>
+#include "args.h"
+#include "log.h"
 
 // In Trove, workingDir refers to the directory that we are sorting.
 
 // argc - argument count
 // argv - array of arguments provided
 int main(int argc, char *argv[]) {
-    std::cout << "Running Trove version 1.0\n";
-
     std::string workingDir;
 
     if (argc > 1) {
@@ -20,7 +19,8 @@ int main(int argc, char *argv[]) {
     if (!std::filesystem::exists(workingDir)) {
         std::filesystem::create_directory(workingDir);
     } else {
-        std::cout << "LOG: " << workingDir << " already exists, defaulting to" << workingDir << "\n";
+        const std::string message = workingDir + " already exists, defaulting to " + workingDir;
+        logMessage(message);
     }
 
     return 0;
