@@ -4,19 +4,19 @@
 
 #include <string>
 
-std::string autoFormatDirArg(std::string args) {
+std::string auto_format_dir_arg(std::string args) {
     if (args.empty()) {
-        std::string currentDirPath = "./";
-        return currentDirPath;
+        std::string current_dir_path = "./";
+        return current_dir_path;
     }
 
-    int argsLength = args.length();
-    char lastArgChar = args[argsLength - 1];
+    int args_length = args.length();
+    char last_arg_char = args[args_length - 1];
 
-    if (lastArgChar == '/') {
+    if (last_arg_char == '/') {
         return args;
     }
 
-    std::string argsWithTrailingSlash = args + "/";
-    return argsWithTrailingSlash;
+    std::string args_formatted = args + "/";
+    return args_formatted;
 }

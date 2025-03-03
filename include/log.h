@@ -6,6 +6,6 @@
 #ifndef LOG_H
 #define LOG_H
 
-void logMessage(const std::string& message);
+void log_message(const std::string& message);
 
 #endif //LOG_H

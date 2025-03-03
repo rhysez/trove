@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# To give permissions, run chmod +x pop_dir.sh
-# This script creates the testing directory tmp.
-# It is used to demonstrate Trove's functionality or to test it.
+# To give execute permissions, run chmod +x pop_dir.sh
+# This script creates the testing directory tmp and populates it with dummy files.
+# It can be used to demonstrate or test Trove's functionality.
 
 if [ -d ../tmp ]
 then

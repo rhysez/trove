@@ -8,6 +8,6 @@
 
 // Automatically formats the provided directory argument with a trailing slash.
 // If not provided, returns the path to the current working directory.
-std::string autoFormatDirArg(std::string args);
+std::string auto_format_dir_arg(std::string args);
 
 #endif //ARGS_H

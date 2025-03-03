@@ -6,6 +6,6 @@
 #define EXAMPLE_H
 #include <iostream>
 
-int spawnDir(std::string workingPath, std::string name);
+int spawn_dir(std::string working_path, std::string name);
 
 #endif //EXAMPLE_H

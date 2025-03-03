@@ -12,6 +12,6 @@
 // If we passed the string by value instead of reference,
 // this would create a copy,
 // which is unnecessary when the value will never change.
-void logMessage(const std::string& message) {
+void log_message(const std::string& message) {
     std::cout << "LOG: " << message << '\n';
 }
