@@ -142,16 +142,4 @@ std::vector<std::string> extensions_application {
     EXT_DEY
 };
 
-// Contains all of our file extension vectors within one parent vector,
-// takes a reference to each vector.
-std::vector<std::vector<std::string>> extensions_all {
-    extensions_images,
-    extensions_video,
-    extensions_audio,
-    extensions_archive,
-    extensions_documents,
-    extensions_fonts,
-    extensions_application
-};
-
 #endif //CONSTANTS_H
