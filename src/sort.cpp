@@ -22,9 +22,9 @@ void sort_files(std::string path) {
                 // Check if the appropriate directory exists.
                 // If it does, move it there.
                 // Else, create the directory and then move it there.
-                // TODO: Currently we have no way of knowing what the extension type is!
-               if (extension == ".docx") {
-                   std::cout << extension << '\n';
+
+               if (std::find(extensions_images.begin(), extensions_images.end(), file_extension) != extensions_images.end()) {
+                   std::cout << file_extension << '\n';
                }
             };
         }
