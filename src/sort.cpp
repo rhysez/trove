@@ -28,29 +28,21 @@ void sort_files(std::string path) {
 
     // Iterates through each entry in the directory.
     // Takes a reference to the entry, which is of type 'auto' (automatically assigned).
-    for (const auto& entry : std::filesystem::directory_iterator(path)) {
-
+    for (const auto &entry: std::filesystem::directory_iterator(path)) {
         std::filesystem::path file_extension = entry.path().extension();
         std::filesystem::path file_name = entry.path().filename();
-
-        // Iterates through every vector of extensions
-        for (const std::vector<std::string>& extension_vec : extensions_all) {
-            // Iterates through every extension within the current extension vector
-            for (const std::string& extension : extension_vec) {
-                // If the file extension exists in category
-               if (std::find(extensions_images.begin(), extensions_images.end(), file_extension) != extensions_images.end()) {
-                   // If the images directory exists
-                   if (images_exists) {
-                       // Move to images directory
-                       // TODO: EXCEPTION THROWN HERE
-                       std::filesystem::rename(entry.path(), path + DIR_NAME_IMAGES + file_name.string());
-                   } else {
-                       // Create images directory, then move
-                       std::filesystem::create_directory(path + DIR_NAME_IMAGES);
-                       std::filesystem::rename(entry.path(), path + DIR_NAME_IMAGES + file_name.string());
-                   }
-               }
-            };
+        // Iterates through each extension vector and checks for a match on file_extension.
+        if (std::find(extensions_images.begin(), extensions_images.end(), file_extension) != extensions_images.end()) {
+            // If the images directory exists
+            if (images_exists) {
+                // Move to images directory
+                // TODO: EXCEPTION THROWN HERE
+                std::filesystem::rename(entry.path(), path + DIR_NAME_IMAGES + file_name.string());
+            } else {
+                // Create images directory, then move
+                std::filesystem::create_directory(path + DIR_NAME_IMAGES);
+                std::filesystem::rename(entry.path(), path + DIR_NAME_IMAGES + file_name.string());
+            }
         }
-    }
+    };
 }
