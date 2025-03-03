@@ -9,15 +9,14 @@
 using std::string;
 
 // Directory names
-const string DIR_NAME_TEST        = "subdir";
-const string DIR_NAME_IMAGES      = "Images";
-const string DIR_NAME_DOCUMENTS   = "Docs";
-const string DIR_NAME_AUDIO       = "Audio";
-const string DIR_NAME_VIDEO       = "Videos";
-const string DIR_NAME_ARCHIVES    = "Archives";
-const string DIR_NAME_FONTS       = "Fonts";
-const string DIR_NAME_APPLICATION = "Application";
-const string DIR_NAME_MISC        = "Misc";
+const string DIR_NAME_IMAGES      = "images/";
+const string DIR_NAME_DOCUMENTS   = "docs/";
+const string DIR_NAME_AUDIO       = "audio/";
+const string DIR_NAME_VIDEO       = "videos/";
+const string DIR_NAME_ARCHIVES    = "archives/";
+const string DIR_NAME_FONTS       = "fonts/";
+const string DIR_NAME_APPLICATION = "application/";
+const string DIR_NAME_MISC        = "misc/";
 
 // File extensions
 // Images
