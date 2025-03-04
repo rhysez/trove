@@ -12,4 +12,5 @@ add_executable(trove src/main.cpp
         src/log.cpp
         include/constants.h
         include/sort.h
-        src/sort.cpp)
+        src/sort.cpp
+)
