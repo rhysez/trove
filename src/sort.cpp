@@ -32,16 +32,16 @@ void sort_files(std::string path) {
         std::filesystem::path file_extension = entry.path().extension();
         std::filesystem::path file_name = entry.path().filename();
         // Iterates through each extension vector and checks for a match on file_extension.
-        if (std::find(extensions_images.begin(), extensions_images.end(), file_extension) != extensions_images.end()) {
+        if (std::find(images.extensions.begin(), images.extensions.end(), file_extension) != images.extensions.end()) {
+            bool dir_exists = std::filesystem::exists(path + images.dir_name);
             // If the images directory exists
-            if (images_exists) {
+            if (dir_exists) {
                 // Move to images directory
-                // TODO: EXCEPTION THROWN HERE
-                std::filesystem::rename(entry.path(), path + DIR_NAME_IMAGES + file_name.string());
+                std::filesystem::rename(entry.path(), path + images.dir_name + file_name.string());
             } else {
                 // Create images directory, then move
-                std::filesystem::create_directory(path + DIR_NAME_IMAGES);
-                std::filesystem::rename(entry.path(), path + DIR_NAME_IMAGES + file_name.string());
+                std::filesystem::create_directory(path + images.dir_name);
+                std::filesystem::rename(entry.path(), path + images.dir_name + file_name.string());
             }
         }
     };

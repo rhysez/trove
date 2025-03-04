@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (!std::filesystem::exists(working_dir)) {
-        const std::string msg_working_dir_missing = "Could not find directory: " + working_dir;
+        const std::string msg_working_dir_missing = "Could not find directory " + working_dir;
         log_message(msg_working_dir_missing);
         return 1;
     }

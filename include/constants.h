@@ -8,28 +8,36 @@
 
 using std::string;
 
+typedef string file_extension;
+typedef string dir_name;
+
 // Directory names
-const string DIR_NAME_IMAGES      = "images/";
-const string DIR_NAME_DOCUMENTS   = "docs/";
-const string DIR_NAME_AUDIO       = "audio/";
-const string DIR_NAME_VIDEO       = "videos/";
-const string DIR_NAME_ARCHIVES    = "archives/";
-const string DIR_NAME_FONTS       = "fonts/";
-const string DIR_NAME_APPLICATION = "application/";
-const string DIR_NAME_MISC        = "misc/";
+const dir_name DIR_NAME_IMAGES      = "images/";
+const dir_name DIR_NAME_DOCUMENTS   = "docs/";
+const dir_name DIR_NAME_AUDIO       = "audio/";
+const dir_name DIR_NAME_VIDEO       = "videos/";
+const dir_name DIR_NAME_ARCHIVES    = "archives/";
+const dir_name DIR_NAME_FONTS       = "fonts/";
+const dir_name DIR_NAME_APPLICATION = "application/";
+const dir_name DIR_NAME_MISC        = "misc/";
 
 // File extensions
 // Images
-const string EXT_JPG            = ".jpg";
-const string EXT_JPEG           = ".jpeg";
-const string EXT_PNG            = ".png";
-const string EXT_BMP            = ".bmp";
-const string EXT_GIF            = ".gif";
-const string EXT_WEBP          = ".webp";
-const string EXT_CR2            = ".cr2";
-const string EXT_TIF            = ".tif";
-const string EXT_SVG            = ".svg";
-const string EXT_AVIF            = ".avif";
+const file_extension EXT_JPG            = ".jpg";
+const file_extension EXT_JPEG           = ".jpeg";
+const file_extension EXT_PNG            = ".png";
+const file_extension EXT_BMP            = ".bmp";
+const file_extension EXT_GIF            = ".gif";
+const file_extension EXT_WEBP          = ".webp";
+const file_extension EXT_CR2            = ".cr2";
+const file_extension EXT_TIF            = ".tif";
+const file_extension EXT_SVG            = ".svg";
+const file_extension EXT_AVIF            = ".avif";
+
+struct SortableFileType {
+    string dir_name {};
+    std::vector<std::string> extensions {};
+};
 
 std::vector<std::string> extensions_images {
     EXT_JPG,
@@ -44,11 +52,13 @@ std::vector<std::string> extensions_images {
     EXT_AVIF
 };
 
+SortableFileType images {DIR_NAME_IMAGES, extensions_images};
+
 // Video
-const string EXT_MP4            = ".mp4";
-const string EXT_MKV            = ".mkv";
-const string EXT_MOV            = ".mov";
-const string EXT_AVI            = ".avi";
+const file_extension EXT_MP4            = ".mp4";
+const file_extension EXT_MKV            = ".mkv";
+const file_extension EXT_MOV            = ".mov";
+const file_extension EXT_AVI            = ".avi";
 
 std::vector<std::string> extensions_video {
     EXT_MP4,
@@ -57,10 +67,12 @@ std::vector<std::string> extensions_video {
     EXT_AVI
 };
 
+SortableFileType video {DIR_NAME_VIDEO, extensions_video};
+
 // Audio
-const string EXT_MP3            = ".mp3";
-const string EXT_MID            = ".mid";
-const string EXT_WAV            = ".wav";
+const file_extension EXT_MP3            = ".mp3";
+const file_extension EXT_MID            = ".mid";
+const file_extension EXT_WAV            = ".wav";
 
 std::vector<std::string> extensions_audio {
     EXT_MP3,
@@ -68,14 +80,16 @@ std::vector<std::string> extensions_audio {
     EXT_WAV
 };
 
+SortableFileType audio {DIR_NAME_AUDIO, extensions_audio};
+
 // Documents
-const string EXT_PDF            = ".pdf";
-const string EXT_DOC            = ".doc";
-const string EXT_DOCX           = ".docx";
-const string EXT_XLS            = ".xlsx";
-const string EXT_XLSX          = ".xlsx";
-const string EXT_PPT           = ".ppt";
-const string EXT_PPTX          = ".pptx";
+const file_extension EXT_PDF            = ".pdf";
+const file_extension EXT_DOC            = ".doc";
+const file_extension EXT_DOCX           = ".docx";
+const file_extension EXT_XLS            = ".xlsx";
+const file_extension EXT_XLSX          = ".xlsx";
+const file_extension EXT_PPT           = ".ppt";
+const file_extension EXT_PPTX          = ".pptx";
 
 std::vector<std::string> extensions_documents {
     EXT_PDF,
@@ -87,20 +101,22 @@ std::vector<std::string> extensions_documents {
     EXT_PPTX
 };
 
+SortableFileType documents {DIR_NAME_DOCUMENTS, extensions_documents};
+
 // Archive
-const string EXT_EPUB          = ".epub";
-const string EXT_ZIP            = ".zip";
-const string EXT_TAR            = ".tar";
-const string EXT_TARGZ          = ".tar.gz";
-const string EXT_RAR            = ".rar";
-const string EXT_GZ            = ".gz";
-const string EXT_DEB            = ".deb";
-const string EXT_RPM            = ".rpm";
-const string EXT_7Z            = ".7z";
-const string EXT_XZ             = ".xz";
-const string EXT_CAB            = ".cab";
-const string EXT_LZ4            = ".lz";
-const string EXT_Z              = ".z";
+const file_extension EXT_EPUB          = ".epub";
+const file_extension EXT_ZIP            = ".zip";
+const file_extension EXT_TAR            = ".tar";
+const file_extension EXT_TARGZ          = ".tar.gz";
+const file_extension EXT_RAR            = ".rar";
+const file_extension EXT_GZ            = ".gz";
+const file_extension EXT_DEB            = ".deb";
+const file_extension EXT_RPM            = ".rpm";
+const file_extension EXT_7Z            = ".7z";
+const file_extension EXT_XZ             = ".xz";
+const file_extension EXT_CAB            = ".cab";
+const file_extension EXT_LZ4            = ".lz";
+const file_extension EXT_Z              = ".z";
 
 std::vector<std::string> extensions_archive {
     EXT_EPUB,
@@ -118,11 +134,13 @@ std::vector<std::string> extensions_archive {
     EXT_Z
 };
 
+SortableFileType archive {DIR_NAME_ARCHIVES, extensions_archive};
+
 // Fonts
-const string EXT_WOFF          = ".woff";
-const string EXT_WOFF2         = ".woff2";
-const string EXT_TTF           = ".ttf";
-const string EXT_OTF            = ".otf";
+const file_extension EXT_WOFF          = ".woff";
+const file_extension EXT_WOFF2         = ".woff2";
+const file_extension EXT_TTF           = ".ttf";
+const file_extension EXT_OTF            = ".otf";
 
 std::vector<std::string> extensions_fonts {
     EXT_WOFF,
@@ -131,15 +149,19 @@ std::vector<std::string> extensions_fonts {
     EXT_OTF
 };
 
+SortableFileType fonts {DIR_NAME_FONTS, extensions_fonts};
+
 // Application
-const string EXT_WASM          = ".wasm";
-const string EXT_DEX           = ".dex";
-const string EXT_DEY           = ".dey";
+const file_extension EXT_WASM          = ".wasm";
+const file_extension EXT_DEX           = ".dex";
+const file_extension EXT_DEY           = ".dey";
 
 std::vector<std::string> extensions_application {
     EXT_WASM,
     EXT_DEX,
     EXT_DEY
 };
+
+SortableFileType application {DIR_NAME_APPLICATION, extensions_application};
 
 #endif //CONSTANTS_H
