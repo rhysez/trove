@@ -7,7 +7,7 @@
 #include <filesystem>
 #include <vector>
 
-void sort_files(std::string path) {
+void sort_files_type(std::string path) {
     // Iterates through each entry in the directory.
     // Takes a reference to the entry, which is of type 'auto' (automatically assigned).
     for (const auto &entry: std::filesystem::directory_iterator(path)) {

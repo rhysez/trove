@@ -7,6 +7,6 @@
 #include <string>
 #include <vector>
 
-void sort_files(std::string working_dir);
+void sort_files_type(std::string working_dir);
 
 #endif //SORT_H

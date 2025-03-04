@@ -3,12 +3,17 @@
 #include "args.h"
 #include "log.h"
 #include "sort.h"
+#include "constants.h"
 
 // In Trove, working_dir refers to the directory that we are sorting.
 
 // argc - argument count
 // argv - array of arguments provided
 int main(int argc, char *argv[]) {
+    Presets presets;
+
+    std::string preset = presets.TYPE;
+
     std::string working_dir;
 
     if (argc > 1) {
@@ -26,7 +31,15 @@ int main(int argc, char *argv[]) {
     const std::string msg_working_dir_exists = "Found " + working_dir + ", using target directory " + working_dir;
     log_message(msg_working_dir_exists);
 
-    sort_files(working_dir);
+    if (preset == presets.TYPE) {
+        sort_files_type(working_dir);
+    } else if (preset == presets.SIZE) {
+        std::cerr << "Preset 'size' not yet available" << '\n';
+        return 1;
+    } else {
+        std::cerr << "Unknown preset: " << preset << '\n';
+        return 1;
+    }
 
     const std::string msg_process_ended = "Successfully finished all required jobs";
     log_message(msg_process_ended);

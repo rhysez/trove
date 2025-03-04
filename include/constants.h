@@ -8,6 +8,11 @@
 
 using std::string;
 
+struct Presets {
+    const string TYPE {"type"};
+    const string SIZE {"size"};
+};
+
 typedef string file_extension;
 typedef string dir_name;
 
