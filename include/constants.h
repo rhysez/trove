@@ -164,7 +164,7 @@ std::vector<std::string> extensions_application {
 
 SortableFileType application {DIR_NAME_APPLICATION, extensions_application};
 
-std::vector<SortableFileType&> sortable_file_types {
+std::vector<SortableFileType> sortable_file_types {
     images,
     video,
     audio,
