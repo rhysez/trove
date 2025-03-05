@@ -11,12 +11,15 @@
 // argv - array of arguments provided
 int main(int argc, char *argv[]) {
     Presets presets;
-
     std::string preset = presets.TYPE;
-
+    std::string version = "1.0.0-alpha";
     std::string working_dir;
 
     if (argc > 1) {
+        if (argv[1] == std::string("--version")) {
+            std::cout << version << '\n';
+            return 0;
+        }
         working_dir = auto_format_dir_arg(argv[1]);
     } else {
         working_dir = "./";
