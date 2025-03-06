@@ -11,4 +11,4 @@ else
   mkdir ../tmp
 fi
 
-cd ../tmp && touch test.jpg test.png test.mp4 test.mp3 test.docx
+cd ../tmp && touch test.jpg test.png test.mp4 test.mp3 test.docx test.epub test.json test.azw test.mobi
