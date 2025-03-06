@@ -94,6 +94,7 @@ const file_extension EXT_PPTX          = ".pptx";
 const file_extension EXT_CSV            = ".csv";
 const file_extension EXT_NUMBERS        = ".numbers";
 const file_extension EXT_JSON            = ".json";
+const file_extension EXT_TXT            = ".txt";
 
 std::vector<std::string> extensions_documents {
     EXT_PDF,
@@ -105,7 +106,8 @@ std::vector<std::string> extensions_documents {
     EXT_PPTX,
     EXT_CSV,
     EXT_NUMBERS,
-    EXT_JSON
+    EXT_JSON,
+    EXT_TXT
 };
 
 SortableFileType documents {DIR_NAME_DOCUMENTS, extensions_documents};
