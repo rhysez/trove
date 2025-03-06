@@ -17,6 +17,7 @@ const dir_name DIR_NAME_DOCUMENTS   = "docs/";
 const dir_name DIR_NAME_AUDIO       = "audio/";
 const dir_name DIR_NAME_VIDEO       = "videos/";
 const dir_name DIR_NAME_ARCHIVES    = "archives/";
+const dir_name DIR_NAME_EBOOKS      = "ebooks/";
 const dir_name DIR_NAME_FONTS       = "fonts/";
 const dir_name DIR_NAME_APPLICATION = "application/";
 const dir_name DIR_NAME_MISC        = "misc/";
@@ -90,6 +91,10 @@ const file_extension EXT_XLS            = ".xlsx";
 const file_extension EXT_XLSX          = ".xlsx";
 const file_extension EXT_PPT           = ".ppt";
 const file_extension EXT_PPTX          = ".pptx";
+const file_extension EXT_CSV            = ".csv";
+const file_extension EXT_NUMBERS        = ".numbers";
+const file_extension EXT_JSON            = ".json";
+const file_extension EXT_TXT            = ".txt";
 
 std::vector<std::string> extensions_documents {
     EXT_PDF,
@@ -98,13 +103,16 @@ std::vector<std::string> extensions_documents {
     EXT_XLS,
     EXT_XLSX,
     EXT_PPT,
-    EXT_PPTX
+    EXT_PPTX,
+    EXT_CSV,
+    EXT_NUMBERS,
+    EXT_JSON,
+    EXT_TXT
 };
 
 SortableFileType documents {DIR_NAME_DOCUMENTS, extensions_documents};
 
 // Archive
-const file_extension EXT_EPUB          = ".epub";
 const file_extension EXT_ZIP            = ".zip";
 const file_extension EXT_TAR            = ".tar";
 const file_extension EXT_TARGZ          = ".tar.gz";
@@ -119,7 +127,6 @@ const file_extension EXT_LZ4            = ".lz";
 const file_extension EXT_Z              = ".z";
 
 std::vector<std::string> extensions_archive {
-    EXT_EPUB,
     EXT_ZIP,
     EXT_TAR,
     EXT_TARGZ,
@@ -135,6 +142,19 @@ std::vector<std::string> extensions_archive {
 };
 
 SortableFileType archive {DIR_NAME_ARCHIVES, extensions_archive};
+
+const file_extension EXT_EPUB          = ".epub";
+const file_extension EXT_MOBI          = ".mobi";
+const file_extension EXT_AZW            = ".azw";
+
+std::vector<std::string> extensions_ebooks {
+    EXT_EPUB,
+    EXT_MOBI,
+    EXT_AZW
+};
+
+SortableFileType ebooks { DIR_NAME_EBOOKS, extensions_ebooks };
+
 
 // Fonts
 const file_extension EXT_WOFF          = ".woff";
@@ -170,6 +190,7 @@ std::vector<SortableFileType> sortable_file_types {
     audio,
     documents,
     archive,
+    ebooks,
     fonts,
     application
 };
