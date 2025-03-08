@@ -16,7 +16,7 @@
 int main(int argc, char *argv[]) {
     Presets presets;
     std::string preset = presets.TYPE;
-    std::string version = "1.1.0-alpha";
+    std::string version = "1.2.0-alpha";
     std::string working_dir;
 
     if (argc >= 2) {
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
     const std::string msg_process_ended = "Successfully finished all required jobs";
     log_message(msg_process_ended);
 
-
+    // TODO: Handles 'undo' functionality (placeholder).
     std::string input;
     do {
         std::cout <<
@@ -65,6 +65,8 @@ int main(int argc, char *argv[]) {
             break;
         }
     } while (input.length() != 0);
+
+    std::cout << "Farewell." << '\n';
 
     return 0;
 }
