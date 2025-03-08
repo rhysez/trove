@@ -19,14 +19,15 @@ int main(int argc, char *argv[]) {
     std::string version = "1.1.0-alpha";
     std::string working_dir;
 
-    // TODO: This could get convoluted quickly. Maybe break into a function.
     if (argc >= 2) {
+
         if (argv[1] == std::string("--version")) {
             std::cout << version << '\n';
             return 0;
         }
+
         if (argv[1] == std::string("sort")) {
-            // Checks if a directory has been specified.
+            // Checks if a directory has been specified. If not, default to current directory.
             if (argc > 2 && argv[2]) {
                 working_dir = auto_format_dir_arg(argv[2]);
             } else {
@@ -35,6 +36,7 @@ int main(int argc, char *argv[]) {
         } else {
             std::cerr << "Error: Invalid argument at argument 2. Try passing a valid argument after 'trove'." << '\n';
         }
+
     } else {
         std::cerr << "Missing arguments! Aborting..." << '\n';
     }
@@ -48,15 +50,7 @@ int main(int argc, char *argv[]) {
     const std::string msg_working_dir_exists = "Found " + working_dir + ", using target directory " + working_dir;
     log_message(msg_working_dir_exists);
 
-    if (preset == presets.TYPE) {
-        sort_files_type(working_dir);
-    } else if (preset == presets.SIZE) {
-        std::cerr << "Preset 'size' not yet available" << '\n';
-        return 1;
-    } else {
-        std::cerr << "Unknown preset: " << preset << '\n';
-        return 1;
-    }
+    sort_files_type(working_dir);
 
     const std::string msg_process_ended = "Successfully finished all required jobs";
     log_message(msg_process_ended);
