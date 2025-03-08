@@ -7,22 +7,36 @@
 
 // In Trove, working_dir refers to the directory that we are sorting.
 
+// Trove arguments
+// 1: The action trove should take. For example, "sort".
+// 2: The directory the action should target. If unspecified, targets current directory.
+
 // argc - argument count
 // argv - array of arguments provided
 int main(int argc, char *argv[]) {
     Presets presets;
     std::string preset = presets.TYPE;
-    std::string version = "1.0.0-alpha";
+    std::string version = "1.1.0-alpha";
     std::string working_dir;
 
-    if (argc > 1) {
+    // TODO: This could get convoluted quickly. Maybe break into a function.
+    if (argc >= 2) {
         if (argv[1] == std::string("--version")) {
             std::cout << version << '\n';
             return 0;
         }
-        working_dir = auto_format_dir_arg(argv[1]);
+        if (argv[1] == std::string("sort")) {
+            // Checks if a directory has been specified.
+            if (argc > 2 && argv[2]) {
+                working_dir = auto_format_dir_arg(argv[2]);
+            } else {
+                working_dir = "./";
+            }
+        } else {
+            std::cerr << "Error: Invalid argument at argument 2. Try passing a valid argument after 'trove'." << '\n';
+        }
     } else {
-        working_dir = "./";
+        std::cerr << "Missing arguments! Aborting..." << '\n';
     }
 
     if (!std::filesystem::exists(working_dir)) {
