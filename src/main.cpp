@@ -20,8 +20,7 @@ int main(int argc, char *argv[]) {
     std::string working_dir;
 
     if (argc >= 2) {
-
-        if (argv[1] == std::string("--version")) {
+        if (argv[1] == std::string("version")) {
             std::cout << version << '\n';
             return 0;
         }
@@ -36,7 +35,6 @@ int main(int argc, char *argv[]) {
         } else {
             std::cerr << "Error: Invalid argument at argument 2. Try passing a valid argument after 'trove'." << '\n';
         }
-
     } else {
         std::cerr << "Missing arguments! Aborting..." << '\n';
     }
@@ -54,5 +52,19 @@ int main(int argc, char *argv[]) {
 
     const std::string msg_process_ended = "Successfully finished all required jobs";
     log_message(msg_process_ended);
+
+
+    std::string input;
+    do {
+        std::cout <<
+            "Sort action completed. If you are happy with the result, press enter. Otherwise, to undo this action, enter 'undo':"
+            << '\n';
+        std::getline(std::cin, input);
+        if (input == "undo") {
+            std::cout << "Running hypothetical undo function" << '\n';
+            break;
+        }
+    } while (input.length() != 0);
+
     return 0;
 }
