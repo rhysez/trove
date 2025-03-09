@@ -6,6 +6,16 @@
 #define SORT_H
 #include <string>
 #include <vector>
+#include "constants.h"
+
+class Sorter {
+public:
+    std::string path;
+    std::string type;
+    std::vector<std::string> files;
+
+    // Add methods
+};
 
 void sort_files_type(std::string working_dir);
 

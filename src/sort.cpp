@@ -36,4 +36,7 @@ void sort_files_type(std::string path) {
             }
         }
     };
+
+    const std::string msg_process_ended = "Successfully finished all required jobs";
+    log_message(msg_process_ended);
 }

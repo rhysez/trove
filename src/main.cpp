@@ -44,14 +44,10 @@ int main(int argc, char *argv[]) {
         log_message(msg_working_dir_missing);
         return 1;
     }
-
     const std::string msg_working_dir_exists = "Found " + working_dir + ", using target directory " + working_dir;
     log_message(msg_working_dir_exists);
 
     sort_files_type(working_dir);
-
-    const std::string msg_process_ended = "Successfully finished all required jobs";
-    log_message(msg_process_ended);
 
     // TODO: Handles 'undo' functionality (placeholder).
     std::string input;
@@ -64,9 +60,8 @@ int main(int argc, char *argv[]) {
             std::cout << "Running hypothetical undo function" << '\n';
             break;
         }
-    } while (input.length() != 0);
+    } while (!input.empty());
 
     std::cout << "Farewell." << '\n';
-
     return 0;
 }
