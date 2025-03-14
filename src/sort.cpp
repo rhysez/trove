@@ -55,6 +55,7 @@ void Sorter::sort() const {
     log_message(msg_process_ended);
 }
 
+// TODO: Handle deleting empty trove directories after file restoration.
 void Sorter::restore() const {
     // Iterate through all files
     for (const auto &entry : std::filesystem::directory_iterator(m_path)) {
@@ -75,9 +76,9 @@ void Sorter::restore() const {
                 for (const auto &sub_entry : std::filesystem::directory_iterator(entry.path())) {
                     // Move file to parent directory
                     std::filesystem::path restorable_file_name = sub_entry.path().filename();
-                    std::cout << sub_entry.path().string() << std::endl;
-                    // TODO: Parent path returning an empty string.
-                    std::cout << "Parent path: " << restorable_file_name.parent_path() << std::endl;
+                    std::filesystem::rename(sub_entry.path(), m_path + restorable_file_name.string());
+                    std::string message = "Restored " + sub_entry.path().string();
+                    log_message(message);
                 }
             } else {
                 std::string not_trove_dir = dir_name.string() + " is not a Trove directory, skipping";
