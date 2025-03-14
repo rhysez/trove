@@ -15,7 +15,14 @@ void sort_files_type(std::string path) {
         std::filesystem::path file_name = entry.path().filename();
         // Iterates through each extension vector and checks for a match on file_extension.
         for (const auto &type: sortable_file_types) {
-            if (std::find(type.extensions.begin(), type.extensions.end(), file_extension) != type.extensions.end()) {
+            bool file_type_found = false;
+            for (const auto &extension : type.extensions) {
+                if (extension == file_extension) {
+                    file_type_found = true;
+                    break;
+                }
+            }
+            if (file_type_found) {
                 bool dir_exists = std::filesystem::exists(path + type.dir_name);
                 // If the images directory exists
                 if (dir_exists) {
