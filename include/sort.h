@@ -24,6 +24,4 @@ public:
     void restore() const;
 };
 
-void sort_files_type(std::string working_dir);
-
 #endif //SORT_H

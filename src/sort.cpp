@@ -57,16 +57,27 @@ void Sorter::sort() const {
 
 void Sorter::restore() const {
     // Iterate through all files
-    for (const auto &entry: std::filesystem::directory_iterator(m_path)) {
+    for (const auto &entry : std::filesystem::directory_iterator(m_path)) {
         // If file is a directory
         if (std::filesystem::is_directory(entry.path())) {
             std::filesystem::path dir_name = entry.path().filename();
-            // If directory has a Trove directory name
-            if (dir_name == "trove_dir_name") {
-                // Iterate through the files within that directory.
+            bool is_trove_dir = false;
+            for (const auto &trove_dir_name : DIR_NAMES) {
+                // If directory was created by Trove and is not empty
+                if (dir_name.string()+"/" == trove_dir_name && !std::filesystem::is_empty(m_path + dir_name.string())) {
+                    // Tell program we have found a qualifying directory to restore and break the loop
+                    is_trove_dir = true;
+                    break;
+                }
+            }
+
+            if (is_trove_dir) {
                 for (const auto &sub_entry : std::filesystem::directory_iterator(entry.path())) {
-                    // Do stuff
+                    // Move file to parent directory
+                    std::filesystem::path restorable_file_name = sub_entry.path().filename();
                     std::cout << sub_entry.path().string() << std::endl;
+                    // TODO: Parent path returning an empty string.
+                    std::cout << "Parent path: " << restorable_file_name.parent_path() << std::endl;
                 }
             } else {
                 std::string not_trove_dir = dir_name.string() + " is not a Trove directory, skipping";

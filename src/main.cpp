@@ -16,7 +16,7 @@
 int main(int argc, char *argv[]) {
     Presets presets;
     std::string preset = presets.TYPE;
-    std::string version = "1.2.0-alpha";
+    std::string version = "1.1.0-alpha-2";
     std::string working_dir;
 
     if (argc >= 2) {
@@ -48,13 +48,13 @@ int main(int argc, char *argv[]) {
     log_message(msg_working_dir_exists);
 
     const Sorter sorter{working_dir};
-    sorter.sort();
+    sorter.restore();
 
     // TODO: Handles 'undo' functionality (placeholder).
     std::string input;
     do {
         std::cout <<
-            "Sort action completed. If you are happy with the result, press enter. Otherwise, to undo this action, enter 'undo':"
+            "Action completed. To exit, press enter. To undo this action, enter 'undo':"
             << '\n';
         std::getline(std::cin, input);
         if (input == "undo") {
