@@ -55,7 +55,6 @@ void Sorter::sort() const {
     log_message(msg_process_ended);
 }
 
-// TODO: Handle deleting empty trove directories after file restoration.
 void Sorter::restore() const {
     // Iterate through all files
     for (const auto &entry : std::filesystem::directory_iterator(m_path)) {
@@ -80,6 +79,31 @@ void Sorter::restore() const {
                     std::string message = "Restored " + sub_entry.path().string();
                     log_message(message);
                 }
+            } else {
+                std::string not_trove_dir = dir_name.string() + " is not a qualifying directory, skipping";
+                log_message(not_trove_dir);
+            }
+        }
+    }
+
+    for (const auto &entry : std::filesystem::directory_iterator(m_path)) {
+        // If file is a directory
+        if (std::filesystem::is_directory(entry.path())) {
+            std::filesystem::path dir_name = entry.path().filename();
+            bool is_empty_trove_dir = false;
+            for (const auto &trove_dir_name : DIR_NAMES) {
+                // If directory was created by Trove and is not empty
+                if (dir_name.string()+"/" == trove_dir_name && std::filesystem::is_empty(m_path + dir_name.string())) {
+                    // Tell program we have found a qualifying directory to restore and break the loop
+                    is_empty_trove_dir = true;
+                    break;
+                }
+            }
+
+            if (is_empty_trove_dir) {
+                std::filesystem::remove(entry.path());
+                std::string deleted_trove_dir = "Deleted " + dir_name.string();
+                log_message(deleted_trove_dir);
             } else {
                 std::string not_trove_dir = dir_name.string() + " is not a Trove directory, skipping";
                 log_message(not_trove_dir);

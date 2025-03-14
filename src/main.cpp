@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
             return 0;
         }
 
-        if (argv[1] == std::string("sort")) {
+        if (argv[1] == std::string("sort") || argv[1] == std::string("restore")) {
             // Checks if a directory has been specified. If not, default to current directory.
             if (argc > 2 && argv[2]) {
                 working_dir = auto_format_dir_arg(argv[2]);
@@ -48,7 +48,12 @@ int main(int argc, char *argv[]) {
     log_message(msg_working_dir_exists);
 
     const Sorter sorter{working_dir};
-    sorter.restore();
+    if (argv[1] == std::string("sort")) {
+        sorter.sort();
+    } else if (argv[1] == std::string("restore")) {
+        sorter.restore();
+    }
+
 
     // TODO: Handles 'undo' functionality (placeholder).
     std::string input;
