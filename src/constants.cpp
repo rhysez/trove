@@ -5,74 +5,86 @@
 #include "constants.h"
 
 // Definitions of directory names
-const dir_name DIR_NAME_IMAGES = "images/";
-const dir_name DIR_NAME_DOCUMENTS = "docs/";
-const dir_name DIR_NAME_AUDIO = "audio/";
-const dir_name DIR_NAME_VIDEO = "videos/";
-const dir_name DIR_NAME_ARCHIVES = "archives/";
-const dir_name DIR_NAME_EBOOKS = "ebooks/";
-const dir_name DIR_NAME_FONTS = "fonts/";
-const dir_name DIR_NAME_APPLICATION = "application/";
-const dir_name DIR_NAME_MISC = "misc/";
+const std::string DIR_NAME_IMAGES = "images/";
+const std::string DIR_NAME_DOCUMENTS = "docs/";
+const std::string DIR_NAME_AUDIO = "audio/";
+const std::string DIR_NAME_VIDEO = "videos/";
+const std::string DIR_NAME_ARCHIVES = "archives/";
+const std::string DIR_NAME_EBOOKS = "ebooks/";
+const std::string DIR_NAME_FONTS = "fonts/";
+const std::string DIR_NAME_APPLICATION = "application/";
+const std::string DIR_NAME_MISC = "misc/";
+
+const std::vector<std::string> DIR_NAMES = {
+    DIR_NAME_IMAGES,
+    DIR_NAME_DOCUMENTS,
+    DIR_NAME_AUDIO,
+    DIR_NAME_VIDEO,
+    DIR_NAME_ARCHIVES,
+    DIR_NAME_EBOOKS,
+    DIR_NAME_FONTS,
+    DIR_NAME_APPLICATION,
+    DIR_NAME_MISC
+};
 
 // Image extensions
-const file_extension EXT_JPG = ".jpg";
-const file_extension EXT_JPEG = ".jpeg";
-const file_extension EXT_PNG = ".png";
-const file_extension EXT_BMP = ".bmp";
-const file_extension EXT_GIF = ".gif";
-const file_extension EXT_WEBP = ".webp";
-const file_extension EXT_CR2 = ".cr2";
-const file_extension EXT_TIF = ".tif";
-const file_extension EXT_SVG = ".svg";
-const file_extension EXT_AVIF = ".avif";
+const std::string EXT_JPG = ".jpg";
+const std::string EXT_JPEG = ".jpeg";
+const std::string EXT_PNG = ".png";
+const std::string EXT_BMP = ".bmp";
+const std::string EXT_GIF = ".gif";
+const std::string EXT_WEBP = ".webp";
+const std::string EXT_CR2 = ".cr2";
+const std::string EXT_TIF = ".tif";
+const std::string EXT_SVG = ".svg";
+const std::string EXT_AVIF = ".avif";
 // Video extensions
-const file_extension EXT_MP4 = ".mp4";
-const file_extension EXT_MKV = ".mkv";
-const file_extension EXT_MOV = ".mov";
-const file_extension EXT_AVI = ".avi";
+const std::string EXT_MP4 = ".mp4";
+const std::string EXT_MKV = ".mkv";
+const std::string EXT_MOV = ".mov";
+const std::string EXT_AVI = ".avi";
 // Audio extensions
-const file_extension EXT_MP3 = ".mp3";
-const file_extension EXT_MID = ".mid";
-const file_extension EXT_WAV = ".wav";
+const std::string EXT_MP3 = ".mp3";
+const std::string EXT_MID = ".mid";
+const std::string EXT_WAV = ".wav";
 // Document extensions
-const file_extension EXT_PDF = ".pdf";
-const file_extension EXT_DOC = ".doc";
-const file_extension EXT_DOCX = ".docx";
-const file_extension EXT_XLS = ".xlsx";
-const file_extension EXT_XLSX = ".xlsx";
-const file_extension EXT_PPT = ".ppt";
-const file_extension EXT_PPTX = ".pptx";
-const file_extension EXT_CSV = ".csv";
-const file_extension EXT_NUMBERS = ".numbers";
-const file_extension EXT_JSON = ".json";
-const file_extension EXT_TXT = ".txt";
+const std::string EXT_PDF = ".pdf";
+const std::string EXT_DOC = ".doc";
+const std::string EXT_DOCX = ".docx";
+const std::string EXT_XLS = ".xlsx";
+const std::string EXT_XLSX = ".xlsx";
+const std::string EXT_PPT = ".ppt";
+const std::string EXT_PPTX = ".pptx";
+const std::string EXT_CSV = ".csv";
+const std::string EXT_NUMBERS = ".numbers";
+const std::string EXT_JSON = ".json";
+const std::string EXT_TXT = ".txt";
 // Archive extensions
-const file_extension EXT_ZIP = ".zip";
-const file_extension EXT_TAR = ".tar";
-const file_extension EXT_TARGZ = ".tar.gz";
-const file_extension EXT_RAR = ".rar";
-const file_extension EXT_GZ = ".gz";
-const file_extension EXT_DEB = ".deb";
-const file_extension EXT_RPM = ".rpm";
-const file_extension EXT_7Z = ".7z";
-const file_extension EXT_XZ = ".xz";
-const file_extension EXT_CAB = ".cab";
-const file_extension EXT_LZ4 = ".lz";
-const file_extension EXT_Z = ".z";
+const std::string EXT_ZIP = ".zip";
+const std::string EXT_TAR = ".tar";
+const std::string EXT_TARGZ = ".tar.gz";
+const std::string EXT_RAR = ".rar";
+const std::string EXT_GZ = ".gz";
+const std::string EXT_DEB = ".deb";
+const std::string EXT_RPM = ".rpm";
+const std::string EXT_7Z = ".7z";
+const std::string EXT_XZ = ".xz";
+const std::string EXT_CAB = ".cab";
+const std::string EXT_LZ4 = ".lz";
+const std::string EXT_Z = ".z";
 // Ebook extensions
-const file_extension EXT_EPUB = ".epub";
-const file_extension EXT_MOBI = ".mobi";
-const file_extension EXT_AZW = ".azw";
+const std::string EXT_EPUB = ".epub";
+const std::string EXT_MOBI = ".mobi";
+const std::string EXT_AZW = ".azw";
 // Font extensions
-const file_extension EXT_WOFF = ".woff";
-const file_extension EXT_WOFF2 = ".woff2";
-const file_extension EXT_TTF = ".ttf";
-const file_extension EXT_OTF = ".otf";
+const std::string EXT_WOFF = ".woff";
+const std::string EXT_WOFF2 = ".woff2";
+const std::string EXT_TTF = ".ttf";
+const std::string EXT_OTF = ".otf";
 // Application extensions
-const file_extension EXT_WASM = ".wasm";
-const file_extension EXT_DEX = ".dex";
-const file_extension EXT_DEY = ".dey";
+const std::string EXT_WASM = ".wasm";
+const std::string EXT_DEX = ".dex";
+const std::string EXT_DEY = ".dey";
 
 // Definitions of extension lists
 std::vector<std::string> extensions_images = {

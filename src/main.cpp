@@ -7,22 +7,36 @@
 
 // In Trove, working_dir refers to the directory that we are sorting.
 
+// Trove arguments
+// 1: The action trove should take. For example, "sort".
+// 2: The directory the action should target. If unspecified, targets current directory.
+
 // argc - argument count
 // argv - array of arguments provided
 int main(int argc, char *argv[]) {
     Presets presets;
     std::string preset = presets.TYPE;
-    std::string version = "1.1.0-alpha";
+    std::string version = "1.1.0-alpha-2";
     std::string working_dir;
 
-    if (argc > 1) {
-        if (argv[1] == std::string("--version")) {
+    if (argc >= 2) {
+        if (argv[1] == std::string("version")) {
             std::cout << version << '\n';
             return 0;
         }
-        working_dir = auto_format_dir_arg(argv[1]);
+
+        if (argv[1] == std::string("sort")) {
+            // Checks if a directory has been specified. If not, default to current directory.
+            if (argc > 2 && argv[2]) {
+                working_dir = auto_format_dir_arg(argv[2]);
+            } else {
+                working_dir = "./";
+            }
+        } else {
+            std::cerr << "Error: Invalid argument at argument 2. Try passing a valid argument after 'trove'." << '\n';
+        }
     } else {
-        working_dir = "./";
+        std::cerr << "Missing arguments! Aborting..." << '\n';
     }
 
     if (!std::filesystem::exists(working_dir)) {
@@ -30,21 +44,25 @@ int main(int argc, char *argv[]) {
         log_message(msg_working_dir_missing);
         return 1;
     }
-
     const std::string msg_working_dir_exists = "Found " + working_dir + ", using target directory " + working_dir;
     log_message(msg_working_dir_exists);
 
-    if (preset == presets.TYPE) {
-        sort_files_type(working_dir);
-    } else if (preset == presets.SIZE) {
-        std::cerr << "Preset 'size' not yet available" << '\n';
-        return 1;
-    } else {
-        std::cerr << "Unknown preset: " << preset << '\n';
-        return 1;
-    }
+    const Sorter sorter{working_dir};
+    sorter.restore();
 
-    const std::string msg_process_ended = "Successfully finished all required jobs";
-    log_message(msg_process_ended);
+    // TODO: Handles 'undo' functionality (placeholder).
+    std::string input;
+    do {
+        std::cout <<
+            "Action completed. To exit, press enter. To undo this action, enter 'undo':"
+            << '\n';
+        std::getline(std::cin, input);
+        if (input == "undo") {
+            std::cout << "Running hypothetical undo function" << '\n';
+            break;
+        }
+    } while (!input.empty());
+
+    std::cout << "Farewell." << '\n';
     return 0;
 }

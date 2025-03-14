@@ -7,74 +7,71 @@
 #include <string>
 #include <vector>
 
-using std::string;
-
-// Typedef for clarity
-typedef string file_extension;
-typedef string dir_name;
 
 // Declaration of directory names (extern for definition in .cpp)
-extern const dir_name DIR_NAME_IMAGES;
-extern const dir_name DIR_NAME_DOCUMENTS;
-extern const dir_name DIR_NAME_AUDIO;
-extern const dir_name DIR_NAME_VIDEO;
-extern const dir_name DIR_NAME_ARCHIVES;
-extern const dir_name DIR_NAME_EBOOKS;
-extern const dir_name DIR_NAME_FONTS;
-extern const dir_name DIR_NAME_APPLICATION;
-extern const dir_name DIR_NAME_MISC;
+extern const std::string DIR_NAME_IMAGES;
+extern const std::string DIR_NAME_DOCUMENTS;
+extern const std::string DIR_NAME_AUDIO;
+extern const std::string DIR_NAME_VIDEO;
+extern const std::string DIR_NAME_ARCHIVES;
+extern const std::string DIR_NAME_EBOOKS;
+extern const std::string DIR_NAME_FONTS;
+extern const std::string DIR_NAME_APPLICATION;
+extern const std::string DIR_NAME_MISC;
+
+extern const std::vector<std::string> DIR_NAMES;
 
 // Declaration of file extensions
-extern const file_extension EXT_JPG;
-extern const file_extension EXT_JPEG;
-extern const file_extension EXT_PNG;
-extern const file_extension EXT_BMP;
-extern const file_extension EXT_GIF;
-extern const file_extension EXT_WEBP;
-extern const file_extension EXT_CR2;
-extern const file_extension EXT_TIF;
-extern const file_extension EXT_SVG;
-extern const file_extension EXT_AVIF;
-extern const file_extension EXT_MP4;
-extern const file_extension EXT_MKV;
-extern const file_extension EXT_MOV;
-extern const file_extension EXT_AVI;
-extern const file_extension EXT_MP3;
-extern const file_extension EXT_MID;
-extern const file_extension EXT_WAV;
-extern const file_extension EXT_PDF;
-extern const file_extension EXT_DOC;
-extern const file_extension EXT_DOCX;
-extern const file_extension EXT_XLS;
-extern const file_extension EXT_XLSX;
-extern const file_extension EXT_PPT;
-extern const file_extension EXT_PPTX;
-extern const file_extension EXT_CSV;
-extern const file_extension EXT_NUMBERS;
-extern const file_extension EXT_JSON;
-extern const file_extension EXT_TXT;
-extern const file_extension EXT_ZIP;
-extern const file_extension EXT_TAR;
-extern const file_extension EXT_TARGZ;
-extern const file_extension EXT_RAR;
-extern const file_extension EXT_GZ;
-extern const file_extension EXT_DEB;
-extern const file_extension EXT_RPM;
-extern const file_extension EXT_7Z;
-extern const file_extension EXT_XZ;
-extern const file_extension EXT_CAB;
-extern const file_extension EXT_LZ4;
-extern const file_extension EXT_Z;
-extern const file_extension EXT_EPUB;
-extern const file_extension EXT_MOBI;
-extern const file_extension EXT_AZW;
-extern const file_extension EXT_WOFF;
-extern const file_extension EXT_WOFF2;
-extern const file_extension EXT_TTF;
-extern const file_extension EXT_OTF;
-extern const file_extension EXT_WASM;
-extern const file_extension EXT_DEX;
-extern const file_extension EXT_DEY;
+extern const std::string EXT_JPG;
+extern const std::string EXT_JPEG;
+extern const std::string EXT_PNG;
+extern const std::string EXT_BMP;
+extern const std::string EXT_GIF;
+extern const std::string EXT_WEBP;
+extern const std::string EXT_CR2;
+extern const std::string EXT_TIF;
+extern const std::string EXT_SVG;
+extern const std::string EXT_AVIF;
+extern const std::string EXT_MP4;
+extern const std::string EXT_MKV;
+extern const std::string EXT_MOV;
+extern const std::string EXT_AVI;
+extern const std::string EXT_MP3;
+extern const std::string EXT_MID;
+extern const std::string EXT_WAV;
+extern const std::string EXT_PDF;
+extern const std::string EXT_DOC;
+extern const std::string EXT_DOCX;
+extern const std::string EXT_XLS;
+extern const std::string EXT_XLSX;
+extern const std::string EXT_PPT;
+extern const std::string EXT_PPTX;
+extern const std::string EXT_CSV;
+extern const std::string EXT_NUMBERS;
+extern const std::string EXT_JSON;
+extern const std::string EXT_TXT;
+extern const std::string EXT_ZIP;
+extern const std::string EXT_TAR;
+extern const std::string EXT_TARGZ;
+extern const std::string EXT_RAR;
+extern const std::string EXT_GZ;
+extern const std::string EXT_DEB;
+extern const std::string EXT_RPM;
+extern const std::string EXT_7Z;
+extern const std::string EXT_XZ;
+extern const std::string EXT_CAB;
+extern const std::string EXT_LZ4;
+extern const std::string EXT_Z;
+extern const std::string EXT_EPUB;
+extern const std::string EXT_MOBI;
+extern const std::string EXT_AZW;
+extern const std::string EXT_WOFF;
+extern const std::string EXT_WOFF2;
+extern const std::string EXT_TTF;
+extern const std::string EXT_OTF;
+extern const std::string EXT_WASM;
+extern const std::string EXT_DEX;
+extern const std::string EXT_DEY;
 
 // Declaration of extension lists
 extern std::vector<std::string> extensions_images;
@@ -88,7 +85,7 @@ extern std::vector<std::string> extensions_application;
 
 // Definition of the SortableFileType struct
 struct SortableFileType {
-    string dir_name {};
+    std::string dir_name {};
     std::vector<std::string> extensions {};
 };
 

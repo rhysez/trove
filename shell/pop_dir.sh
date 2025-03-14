@@ -6,7 +6,8 @@
 
 if [ -d ../tmp ]
 then
-  echo "tmp directory present"
+  rm -rf ../tmp
+  mkdir ../tmp
 else
   mkdir ../tmp
 fi
