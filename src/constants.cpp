@@ -15,6 +15,18 @@ const std::string DIR_NAME_FONTS = "fonts/";
 const std::string DIR_NAME_APPLICATION = "application/";
 const std::string DIR_NAME_MISC = "misc/";
 
+const std::vector<std::string> DIR_NAMES = {
+    DIR_NAME_IMAGES,
+    DIR_NAME_DOCUMENTS,
+    DIR_NAME_AUDIO,
+    DIR_NAME_VIDEO,
+    DIR_NAME_ARCHIVES,
+    DIR_NAME_EBOOKS,
+    DIR_NAME_FONTS,
+    DIR_NAME_APPLICATION,
+    DIR_NAME_MISC
+};
+
 // Image extensions
 const std::string EXT_JPG = ".jpg";
 const std::string EXT_JPEG = ".jpeg";

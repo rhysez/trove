@@ -47,7 +47,8 @@ int main(int argc, char *argv[]) {
     const std::string msg_working_dir_exists = "Found " + working_dir + ", using target directory " + working_dir;
     log_message(msg_working_dir_exists);
 
-    sort_files_type(working_dir);
+    const Sorter sorter{working_dir};
+    sorter.sort();
 
     // TODO: Handles 'undo' functionality (placeholder).
     std::string input;

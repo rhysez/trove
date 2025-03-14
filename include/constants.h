@@ -19,6 +19,8 @@ extern const std::string DIR_NAME_FONTS;
 extern const std::string DIR_NAME_APPLICATION;
 extern const std::string DIR_NAME_MISC;
 
+extern const std::vector<std::string> DIR_NAMES;
+
 // Declaration of file extensions
 extern const std::string EXT_JPG;
 extern const std::string EXT_JPEG;
