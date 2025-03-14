@@ -7,13 +7,13 @@
 #include <vector>
 #include "log.h"
 
-void sort_files_type(std::string path) {
+void sort_files_type(const std::string &path) {
     // Iterates through each entry in the directory.
     // Takes a reference to the entry, which is of type 'auto' (automatically assigned).
     for (const auto &entry: std::filesystem::directory_iterator(path)) {
         std::filesystem::path file_extension = entry.path().extension();
         std::filesystem::path file_name = entry.path().filename();
-        // Iterates through each extension vector and checks for a match on file_extension.
+        // Iterates through each sortable_file_types struct.
         for (const auto &type: sortable_file_types) {
             bool file_type_found = false;
             for (const auto &extension : type.extensions) {
