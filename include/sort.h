@@ -9,12 +9,14 @@
 #include "constants.h"
 
 class Sorter {
+private:
+    std::string m_path;
+    std::vector<std::string> m_files;
 public:
-    std::string path;
-    std::string type;
-    std::vector<std::string> files;
+    Sorter(std::string path, std::vector<std::string> files);
 
-    // Add methods
+    std::string getPath() const {return m_path;}
+    std::vector<std::string> getFiles() const {return m_files;}
 };
 
 void sort_files_type(std::string working_dir);
