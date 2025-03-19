@@ -8,10 +8,10 @@ Trove has been written in C++ and uses CMake as it's build tool.
 At this moment in time, Trove supports macOS and Linux only.
 
 ### Installation (macOS & Linux)
-1. Clone this repository by running `git clone git@github.com:rhysez/trove_v2.git`
-2. Enter the project directory using `cd <path-to-trove-directory>` and build the project. _Build script will be available soon, alternatively you can build using CMake_.
-3. Add Trove to your PATH so that you can run the executable from anywhere. You can do this by adding the following line to your .zshrc (for macOS) or .bashrc (for Linux) `export PATH="$HOME/path-to-trove-directory/cmake-build-debug:$PATH"`
-4. Restart your shell session, and you should be good to go!
+1. Download the trove executable from the latest release. **If building from source,** clone this repository by running `git clone git@github.com:rhysez/trove_v2.git`
+2. **If building from source,** enter the project directory using `cd <path-to-trove-directory>` and build the project. _Build script will be available soon, alternatively you can build using CMake_. (Skip this step if you're not building from source)
+3. Add Trove to your PATH so that you can run the executable from anywhere. You can do this by adding the following line to your .zshrc (for macOS) or .bashrc (for Linux) `export PATH="$HOME/path-to-trove-directory:$PATH"`. **If building from source,** the executable can be found in `cmake-build-debug` within the cloned repository.
+4. Restart your shell session, and you should be good to go! Try running `trove version` to check that Trove has been successfully installed.
 
 ### Getting started
 To get started with Trove, you can simply start by running `trove sort <path-to-directory>`, substituting `<path-to-directory>` with the path to
