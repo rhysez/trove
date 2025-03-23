@@ -16,7 +16,7 @@
 int main(int argc, char *argv[]) {
     Presets presets;
     std::string preset = presets.TYPE;
-    std::string version = "1.1.0-alpha-2";
+    std::string version = "1.0.0-alpha-3";
     std::string working_dir;
 
     if (argc >= 2) {
