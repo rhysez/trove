@@ -10,8 +10,7 @@
 
 // Class definition matching the definition in our header file
 // Members are declared after the ':' and separated by commas
-Sorter::Sorter(std::string path) : m_path(path)
-{
+Sorter::Sorter(std::string path) : m_path(path) {
 }
 
 // We also need to define the implementation of the class' member functions
@@ -23,7 +22,7 @@ void Sorter::sort() const {
         // Iterates through each sortable_file_types struct.
         for (const auto &type: sortable_file_types) {
             bool file_type_found = false;
-            for (const auto &extension : type.extensions) {
+            for (const auto &extension: type.extensions) {
                 if (extension == file_extension) {
                     file_type_found = true;
                     break;
@@ -57,43 +56,35 @@ void Sorter::sort() const {
 
 void Sorter::restore() const {
     // Iterate through all files
-    for (const auto &entry : std::filesystem::directory_iterator(m_path)) {
+    for (const auto &entry: std::filesystem::directory_iterator(m_path)) {
         // If file is a directory
         if (std::filesystem::is_directory(entry.path())) {
             std::filesystem::path dir_name = entry.path().filename();
-            bool is_trove_dir = false;
-            for (const auto &trove_dir_name : DIR_NAMES) {
+            for (const auto &trove_dir_name: DIR_NAMES) {
                 // If directory was created by Trove and is not empty
-                if (dir_name.string()+"/" == trove_dir_name && !std::filesystem::is_empty(m_path + dir_name.string())) {
-                    // Tell program we have found a qualifying directory to restore and break the loop
-                    is_trove_dir = true;
-                    break;
+                if (dir_name.string() + "/" == trove_dir_name && !
+                    std::filesystem::is_empty(m_path + dir_name.string())) {
+                    for (const auto &sub_entry: std::filesystem::directory_iterator(entry.path())) {
+                        // Move file to parent directory
+                        std::filesystem::path restorable_file_name = sub_entry.path().filename();
+                        std::filesystem::rename(sub_entry.path(), m_path + restorable_file_name.string());
+                        std::string message = "Restored " + sub_entry.path().string();
+                        log_message(message);
+                    }
                 }
-            }
-
-            if (is_trove_dir) {
-                for (const auto &sub_entry : std::filesystem::directory_iterator(entry.path())) {
-                    // Move file to parent directory
-                    std::filesystem::path restorable_file_name = sub_entry.path().filename();
-                    std::filesystem::rename(sub_entry.path(), m_path + restorable_file_name.string());
-                    std::string message = "Restored " + sub_entry.path().string();
-                    log_message(message);
-                }
-            } else {
-                std::string not_trove_dir = dir_name.string() + " is not a qualifying directory, skipping";
-                log_message(not_trove_dir);
             }
         }
     }
 
-    for (const auto &entry : std::filesystem::directory_iterator(m_path)) {
+    for (const auto &entry: std::filesystem::directory_iterator(m_path)) {
         // If file is a directory
         if (std::filesystem::is_directory(entry.path())) {
             std::filesystem::path dir_name = entry.path().filename();
             bool is_empty_trove_dir = false;
-            for (const auto &trove_dir_name : DIR_NAMES) {
+            for (const auto &trove_dir_name: DIR_NAMES) {
                 // If directory was created by Trove and is not empty
-                if (dir_name.string()+"/" == trove_dir_name && std::filesystem::is_empty(m_path + dir_name.string())) {
+                if (dir_name.string() + "/" == trove_dir_name &&
+                    std::filesystem::is_empty(m_path + dir_name.string())) {
                     // Tell program we have found a qualifying directory to restore and break the loop
                     is_empty_trove_dir = true;
                     break;
