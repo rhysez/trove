@@ -19,6 +19,8 @@ The only prerequisite for using this program is CMake. Before attempting to buil
 To get started with Trove, you can simply start by running `trove sort <path-to-directory>`, substituting `<path-to-directory>` with the path to
 your chosen directory. If you'd prefer to target your current working directory, you can simply run `trove sort`. This command runs Trove's sort action, which will sort all files in your chosen directory into subdirectories based on their file type.
 
+You can also run `trove restore <path-to-directory>` to remove all files from Trove directories and then destroy those directories.
+
 ### Supported sortable file types
 
 #### Images
