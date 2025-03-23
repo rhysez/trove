@@ -16,7 +16,7 @@
 int main(int argc, char *argv[]) {
     Presets presets;
     std::string preset = presets.TYPE;
-    std::string version = "1.1.0-alpha-2";
+    std::string version = "1.0.0-alpha-3";
     std::string working_dir;
 
     if (argc >= 2) {
@@ -53,20 +53,6 @@ int main(int argc, char *argv[]) {
     } else if (argv[1] == std::string("restore")) {
         sorter.restore();
     }
-
-
-    // TODO: Handles 'undo' functionality (placeholder).
-    std::string input;
-    do {
-        std::cout <<
-            "Action completed. To exit, press enter. To undo this action, enter 'undo':"
-            << '\n';
-        std::getline(std::cin, input);
-        if (input == "undo") {
-            std::cout << "Running hypothetical undo function" << '\n';
-            break;
-        }
-    } while (!input.empty());
 
     std::cout << "Farewell." << '\n';
     return 0;
