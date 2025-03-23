@@ -54,20 +54,6 @@ int main(int argc, char *argv[]) {
         sorter.restore();
     }
 
-
-    // TODO: Handles 'undo' functionality (placeholder).
-    std::string input;
-    do {
-        std::cout <<
-            "Action completed. To exit, press enter. To undo this action, enter 'undo':"
-            << '\n';
-        std::getline(std::cin, input);
-        if (input == "undo") {
-            std::cout << "Running hypothetical undo function" << '\n';
-            break;
-        }
-    } while (!input.empty());
-
     std::cout << "Farewell." << '\n';
     return 0;
 }
