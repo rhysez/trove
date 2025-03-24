@@ -6,10 +6,6 @@
 
 // In Trove, working_dir refers to the directory that we are sorting.
 
-// Trove arguments
-// 1: The action trove should take. For example, "sort".
-// 2: The directory the action should target. If unspecified, targets current directory.
-
 // argc - argument count
 // argv - array of arguments provided
 int main(int argc, char *argv[]) {
@@ -50,6 +46,7 @@ int main(int argc, char *argv[]) {
 
     const Sorter sorter{working_dir};
 
+    // Execute functionality based on argument 2.
     if (argv[1] == std::string("sort")) {
         sorter.sort();
     } else if (argv[1] == std::string("restore")) {
@@ -57,6 +54,8 @@ int main(int argc, char *argv[]) {
     } else if (argv[1] == std::string("version")) {
         std::cout << version << '\n';
         return 0;
+    } else {
+        std::cout << "Error: Unsupported argument '" << argv[1] << "' provided. Exiting..." << '\n';
     }
 
     std::cout << "Farewell." << '\n';
