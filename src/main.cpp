@@ -13,7 +13,7 @@
 // argc - argument count
 // argv - array of arguments provided
 int main(int argc, char *argv[]) {
-    std::string version = "1.0.0-alpha-3";
+    std::string version = "1.0.0";
     std::string working_dir;
 
     if (argc >= 2) {
@@ -31,9 +31,20 @@ int main(int argc, char *argv[]) {
             }
         } else {
             std::cerr << "Error: Invalid argument at argument 2. Try passing a valid argument after 'trove'." << '\n';
+            return 1;
         }
     } else {
-        std::cerr << "Missing arguments! Aborting..." << '\n';
+        std::cout << "usage: trove [version] [sort | sort <path-to-directory>] [restore | restore <path-to-directory>]" << '\n';
+        std::cout << "\n";
+        std::cout << "common trove commands:" << "\n";
+        std::cout << "version - Get the currently installed version" << '\n';
+        std::cout <<
+                "sort - Sort all trove compatible files within the provided directory into new subdirectories based on file type"
+                << '\n';
+        std::cout <<
+                "restore - Restore the provided directory to it's original state before any changes made by trove. All trove directories are deleted once emptied."
+                << '\n';
+        return 0;
     }
 
     if (!std::filesystem::exists(working_dir)) {
