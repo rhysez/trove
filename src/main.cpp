@@ -13,28 +13,28 @@
 // argc - argument count
 // argv - array of arguments provided
 int main(int argc, char *argv[]) {
-    std::string version = "1.0.0";
-    std::string working_dir;
+    std::string version = "1.0.1";
+    std::string working_dir = "./";
 
     if (argc >= 2) {
-        if (argv[1] == std::string("version")) {
-            std::cout << version << '\n';
-            return 0;
-        }
-
+        // Can this logic be moved from here into the if/else block at the bottom of main function?
         if (argv[1] == std::string("sort") || argv[1] == std::string("restore")) {
             // Checks if a directory has been specified. If not, default to current directory.
             if (argc > 2 && argv[2]) {
                 working_dir = auto_format_dir_arg(argv[2]);
-            } else {
-                working_dir = "./";
+                if (!std::filesystem::exists(working_dir)) {
+                    const std::string msg_working_dir_missing = "Could not find directory " + working_dir;
+                    log_message(msg_working_dir_missing);
+                    return 1;
+                }
+                const std::string msg_working_dir_exists =
+                        "Found " + working_dir + ", using target directory " + working_dir;
+                log_message(msg_working_dir_exists);
             }
-        } else {
-            std::cerr << "Error: Invalid argument at argument 2. Try passing a valid argument after 'trove'." << '\n';
-            return 1;
         }
     } else {
-        std::cout << "usage: trove [version] [sort | sort <path-to-directory>] [restore | restore <path-to-directory>]" << '\n';
+        std::cout << "usage: trove [version] [sort | sort <path-to-directory>] [restore | restore <path-to-directory>]"
+                << '\n';
         std::cout << "\n";
         std::cout << "common trove commands:" << "\n";
         std::cout << "version - Get the currently installed version" << '\n';
@@ -47,13 +47,6 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    if (!std::filesystem::exists(working_dir)) {
-        const std::string msg_working_dir_missing = "Could not find directory " + working_dir;
-        log_message(msg_working_dir_missing);
-        return 1;
-    }
-    const std::string msg_working_dir_exists = "Found " + working_dir + ", using target directory " + working_dir;
-    log_message(msg_working_dir_exists);
 
     const Sorter sorter{working_dir};
 
@@ -61,6 +54,9 @@ int main(int argc, char *argv[]) {
         sorter.sort();
     } else if (argv[1] == std::string("restore")) {
         sorter.restore();
+    } else if (argv[1] == std::string("version")) {
+        std::cout << version << '\n';
+        return 0;
     }
 
     std::cout << "Farewell." << '\n';
