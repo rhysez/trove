@@ -17,9 +17,9 @@ int main(int argc, char *argv[]) {
     std::string working_dir = "./";
 
     if (argc >= 2) {
-        // Can this logic be moved from here into the if/else block at the bottom of main function?
+        // This block checks if target directory exists for any action that requires a directory path.
+        // If target directory is not provided, defaults to user's current working directory.
         if (argv[1] == std::string("sort") || argv[1] == std::string("restore")) {
-            // Checks if a directory has been specified. If not, default to current directory.
             if (argc > 2 && argv[2]) {
                 working_dir = auto_format_dir_arg(argv[2]);
                 if (!std::filesystem::exists(working_dir)) {
