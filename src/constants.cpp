@@ -5,15 +5,15 @@
 #include "constants.h"
 
 // Definitions of directory names
-const std::string DIR_NAME_IMAGES = "images/";
-const std::string DIR_NAME_DOCUMENTS = "docs/";
-const std::string DIR_NAME_AUDIO = "audio/";
-const std::string DIR_NAME_VIDEO = "videos/";
-const std::string DIR_NAME_ARCHIVES = "archives/";
-const std::string DIR_NAME_EBOOKS = "ebooks/";
-const std::string DIR_NAME_FONTS = "fonts/";
-const std::string DIR_NAME_APPLICATION = "application/";
-const std::string DIR_NAME_MISC = "misc/";
+const std::string DIR_NAME_IMAGES = "tImages/";
+const std::string DIR_NAME_DOCUMENTS = "tDocs/";
+const std::string DIR_NAME_AUDIO = "tAudio/";
+const std::string DIR_NAME_VIDEO = "tVideos/";
+const std::string DIR_NAME_ARCHIVES = "tArchives/";
+const std::string DIR_NAME_EBOOKS = "tEbooks/";
+const std::string DIR_NAME_FONTS = "tFonts/";
+const std::string DIR_NAME_APPLICATION = "tApplication/";
+const std::string DIR_NAME_MISC = "tMisc/";
 
 const std::vector<std::string> DIR_NAMES = {
     DIR_NAME_IMAGES,

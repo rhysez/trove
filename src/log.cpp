@@ -9,5 +9,5 @@
 #include <string>
 
 void log_message(const std::string& message) {
-    std::cout << "[TROVE] LOG: " << message << '\n';
+    std::cout << "[\033[32mTROVE\033[0m] LOG: " << message << '\n';
 }

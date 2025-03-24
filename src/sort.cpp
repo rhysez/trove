@@ -60,10 +60,12 @@ void Sorter::restore() const {
         // If file is a directory
         if (std::filesystem::is_directory(entry.path())) {
             std::filesystem::path dir_name = entry.path().filename();
+            // Iterate through all directory names
             for (const auto &trove_dir_name: DIR_NAMES) {
-                // If directory was created by Trove and is not empty
+                // If directory matches a trove directory name and is not empty
                 if (dir_name.string() + "/" == trove_dir_name && !
                     std::filesystem::is_empty(m_path + dir_name.string())) {
+                    // Iterate through all files in the directory
                     for (const auto &sub_entry: std::filesystem::directory_iterator(entry.path())) {
                         // Move file to parent directory
                         std::filesystem::path restorable_file_name = sub_entry.path().filename();
